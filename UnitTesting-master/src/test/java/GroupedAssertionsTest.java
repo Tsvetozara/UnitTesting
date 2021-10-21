@@ -3,16 +3,20 @@ import org.junit.jupiter.api.Test;
 import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import java.util.UUID;
 
 public class GroupedAssertionsTest {
     @Test
-    public void allAssertions () {
-        Cart cart = new Cart("theCart");
+    public void groupedAssertions () {
+        Cart cart = new Cart(UUID.randomUUID().toString());
         RealItem item = new RealItem();
-        VirtualItem item2 = new VirtualItem();
-        Assertions.assertEquals(0d, cart.getTotalPrice());
-        Assertions.assertEquals(cart.getCartName(), "theCart");
-        Assertions.assertEquals(item.getWeight(), 0d);
-        Assertions.assertEquals(item2.getSizeOnDisk(),0d);
+        VirtualItem secondItem = new VirtualItem();
+
+        assertAll(
+                () -> Assertions.assertEquals(0d, cart.getTotalPrice()),
+                () -> Assertions.assertNotNull(cart.getCartName()),
+                () -> Assertions.assertEquals(item.getWeight(), 0d),
+                () -> Assertions.assertEquals(secondItem.getSizeOnDisk(),0d));
     }
 }
