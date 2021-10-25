@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestNGTest">
+    <test name="Testing exclude groups">
+        <groups>
+            <run>
+                <exclude name="bonding" />
+            </run>
+        </groups>
+        <classes>
+            <class name="TestNGTest.RealItemWeighTestTestNG"/>
+            <class name="TestNGTest.VirtualItemSizeOnDiskTestTestNG"/>
+        </classes>
+    </test>
+</suite>
